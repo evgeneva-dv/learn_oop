@@ -7,17 +7,39 @@ public class App
 {
     public static void main( String[] args )
     {
-        Cat shilka = new Cat("Шилка",5,3,false);
-        Cat unknownCat = new Cat();
-        Cat chernish = new Cat("Черныш",4);
-        Cat unknownCat2 = new Cat();
+        //Через массив (коллекция)
+        Transport[] transports = new Transport[3];
+        transports[0] = new Transport("Самолет",1000,800,150);
+        transports[1] =new Transport("Корабль",5000,200,100);
+        transports[2] =new Transport("Грузовик",500,90,40);
+
+        int cargo = 1500;
+        int distance = 1450;
+
+        for(Transport tr:transports) {
+            tr.calc(distance,cargo);
+        }
+
+        //Отдельные объекты
+        Transport airplane =new Transport("Самолет",1000,800,150);
+        Transport ship =new Transport("Корабль",5000,200,100);
+        Transport truck =new Transport("Грузовик",500,90,40);
+
+        airplane.calc(987.5,500);
+        ship.calc(1000,10000);
+        truck.calc(60,100);
+
+        //Cat shilka = new Cat("Шилка",5,3,false);
+        //Cat unknownCat = new Cat();
+        //Cat chernish = new Cat("Черныш",4);
+        //Cat unknownCat2 = new Cat();
 
         //System.out.println(shilka.name);  //Обращаться напрямую к св-ву объекта плохо, нужно через геттеры
         //System.out.println(unknownCat.name);
         //System.out.println(unknownCat2.name);
 
-        System.out.println(shilka.getName());
-        System.out.println(unknownCat.getName());
+        //System.out.println(shilka.getName());
+        //System.out.println(unknownCat.getName());
 
 
         //System.out.println(Recursive.numberFibbonachi(30));
