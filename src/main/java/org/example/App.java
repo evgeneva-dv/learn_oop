@@ -1,12 +1,131 @@
 package org.example;
 
 
-import java.util.Arrays;
+import java.lang.invoke.SwitchPoint;
 
 public class App
 {
-    public static void main( String[] args )
-    {
+    public static void main( String[] args ) throws ExceptionHeight {
+
+        int r = 5;
+        System.out.println(Math.pow(r,2)*Math.PI);
+        /*Account acc = new Account(1);
+        System.out.println(acc.getId());
+        System.out.println(acc.getId() instanceof String);
+        acc.setId("bb");
+        System.out.println(acc.getId());
+        System.out.println(acc.getId() instanceof String);
+
+
+        Account<Integer> acc_s = new Account<Integer>(1);
+        //acc_s.setId("bb"); //уже нельзя, тк поставили что тип интеджер
+
+
+        System.out.println(acc_s.getId());
+
+        //Обработка исключений
+
+        /*Box box = null;
+
+        try {
+            box = new Box(-7,-4,5);
+        }
+        catch (ExceptionHeight e) {
+            System.out.println("Размеры коробки скорректированы");
+            box = new Box (Math.abs(e.height), Math.abs(e.wight), Math.abs(e.depth));
+        }
+        System.out.println(box.toString());
+*/
+
+        /*try {
+            int n=1/0;
+
+        }
+        catch (NullPointerException e) {
+            System.out.println("NullPointerException");
+        }
+
+        catch (Exception e) {
+            System.out.println("Exception");
+            System.out.println(e.getMessage());
+        }
+         finally {
+            System.out.println("finally");
+            Cat cat = null;
+            try {
+                cat.getName();
+            }
+            catch (NullPointerException e) {
+                System.out.println("NullPointerException");
+                System.out.println(e.getMessage());
+            }
+            catch (Exception e) {
+                System.out.println("Exception");
+                //System.out.println(e.getMessage());
+            }
+        }
+
+        try {
+
+            int[] a=new int[3];
+            a[4]=6;
+
+
+        }
+        catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("ArrayIndexOutOfBoundsException");
+            System.out.println(e.getMessage());
+
+        }
+
+
+
+
+        /*OracleConnector oracle = new OracleConnector();
+        System.out.println(oracle.create(new String[]{"aa", "bb"}));
+
+
+
+        Dog dog = new Dog("Taksa","male");
+        dog.behavior();
+        dog.say("Gav-gav");
+        Chiken chiken = new Chiken("Simple", "female");
+        chiken.behavior();
+        chiken.say("Ko-ko-ko");
+
+
+        Plane plane1=new Plane("boeng",1000,800,150);
+        Ship ship1 = new Ship("linkor", 5000, 200,100);
+        Truck truck1= new Truck("Kia",500,90,40,3);
+        Transport transport = new Transport("ship",5000,200,400);
+
+        Transport transport1 = new Plane("ss",40,40,40,40); //Объект типа транспорт, несмотря на то что создаем через конструктор самолета
+        //transport1.getMaxHeight(); так нельзя, потому что в классе транспорт нет такого метода, и напрямую transport1.maxHeight не работает
+        Plane transport2= (Plane) transport1; //Создаем новый объект через каст транспорта1 в класс Plane
+        transport2.getMaxHeight();
+
+
+        plane1.fly();
+        System.out.println(plane1.getMaxHeight());
+        System.out.println(plane1.getModel());
+        plane1.calc(900,70);
+        ship1.swim();
+        ship1.calc(500,800);
+        truck1.drive();
+        transport.calc(600,70);
+
+        System.out.println(plane1 instanceof Transport);
+        System.out.println(plane1 instanceof Plane);
+        //System.out.println(plane1 instanceof Ship); так ошибка сразу на уровне компиляции
+        System.out.println(Ship.compareObjects(plane1)); //но можно специально прописать в нужном классе проверку на передаваемый объект
+
+        System.out.println(ship1 instanceof Transport);
+        System.out.println(ship1 instanceof Ship);
+        System.out.println(transport instanceof Transport);
+        System.out.println(transport instanceof Ship);
+
+        /*
+
         //Через массив (коллекция)
         Transport[] transports = new Transport[3];
         transports[0] = new Transport("Самолет",1000,800,150);
@@ -20,6 +139,7 @@ public class App
             tr.calc(distance,cargo);
         }
 
+
         //Отдельные объекты
         Transport airplane =new Transport("Самолет",1000,800,150);
         Transport ship =new Transport("Корабль",5000,200,100);
@@ -29,37 +149,38 @@ public class App
         ship.calc(1000,10000);
         truck.calc(60,100);
 
-        //Cat shilka = new Cat("Шилка",5,3,false);
-        //Cat unknownCat = new Cat();
-        //Cat chernish = new Cat("Черныш",4);
-        //Cat unknownCat2 = new Cat();
 
-        //System.out.println(shilka.name);  //Обращаться напрямую к св-ву объекта плохо, нужно через геттеры
-        //System.out.println(unknownCat.name);
-        //System.out.println(unknownCat2.name);
+        Cat shilka = new Cat("Шилка",5,3,false);
+        Cat unknownCat = new Cat();
+        Cat chernish = new Cat("Черныш",4);
+        Cat unknownCat2 = new Cat();
 
-        //System.out.println(shilka.getName());
-        //System.out.println(unknownCat.getName());
+        System.out.println(shilka.name);  //Обращаться напрямую к св-ву объекта плохо, нужно через геттеры
+        System.out.println(unknownCat.name);
+        System.out.println(unknownCat2.name);
+
+        System.out.println(shilka.getName());
+        System.out.println(unknownCat.getName());
 
 
-        //System.out.println(Recursive.numberFibbonachi(30));
+        System.out.println(Recursive.numberFibbonachi(30));
 
-        //Tasks.simpleNumbers(1,100); //Для вызова статического метода не нужно создавать объект, он не зависит от свойств(состояния) объекта
-        //Tasks cntTicket = new Tasks();
-        //cntTicket.first=0;
-        //cntTicket.last=999999;
-        //int a =cntTicket.countHappyTicket(cntTicket.first,cntTicket.last); //Для нестатического метода обязательно нужен созданные объект и метод зависит от его сосотояния
-        //System.out.println(a);
+        Tasks.simpleNumbers(1,100); //Для вызова статического метода не нужно создавать объект, он не зависит от свойств(состояния) объекта
+        Tasks cntTicket = new Tasks();
+        cntTicket.first=0;
+        cntTicket.last=999999;
+        int a =cntTicket.countHappyTicket(cntTicket.first,cntTicket.last); //Для нестатического метода обязательно нужен созданные объект и метод зависит от его сосотояния
+        System.out.println(a);
 
-        //int [] arr={3,5,6,23,77,2,44,567,32,11};
-        //System.out.println(MathOperArr.min(arr));
-        //System.out.println(MathOperArr.max(arr));
-        //System.out.println(MathOperArr.agr(arr));
-        //System.out.println(MathOperArr.countEvenNumbers(arr));
-        //tableEq();
-        //days();
+        int [] arr={3,5,6,23,77,2,44,567,32,11};
+        System.out.println(MathOperArr.min(arr));
+        System.out.println(MathOperArr.max(arr));
+        System.out.println(MathOperArr.agr(arr));
+        System.out.println(MathOperArr.countEvenNumbers(arr));
+        tableEq();
+        days();
 
-    }
+
 
     //Пример оператора  switch case
     public static void days() {
@@ -184,5 +305,7 @@ public class App
     public static <T> T coalesce(T a, T b) {
         return a == null ? b : a;
 
+    }
+    */
     }
 }

@@ -47,11 +47,15 @@ public class Transport {
 
     public void calc(double distance, float weight) {
         if (weight>getCarrying()) {
-            System.out.println(getModel() + " не сможет перевезти этот груз (превышена масса)");
+            System.out.println(getModel() + " не сможет перевезти этот груз (максимальная масса "+getCarrying()+" км)");
         }
         else {
             System.out.println(getModel()+" перевезет "+ weight+"кг на расстояние " +distance+"км за "+ getCostPerKm()*distance);
         }
 
+    }
+    //final у метода запрещает переопределение метода в потомке
+    public final void hi() {
+        System.out.println("hi");
     }
 }

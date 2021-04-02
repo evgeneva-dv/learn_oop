@@ -1,10 +1,12 @@
 package org.example;
-
+//Принцип ООП - инкапсуляция. Код разбиваем на классы ( и задаем урони доступа)
 public class Cat {
     String name;
     int age;
     int weight;
     boolean isAngry;
+
+    static int count=1;
 
     public Cat(String name, int age, int weight, boolean isAngry) {
         this.name = name;
@@ -25,7 +27,8 @@ public class Cat {
     }
 
     public Cat(){
-        this.name = "Неизвестный кот";
+        this.name = "Неизвестный кот " +count;
+        count++;
     }
 
     public String getName() {
