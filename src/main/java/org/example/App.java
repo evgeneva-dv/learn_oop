@@ -2,13 +2,63 @@ package org.example;
 
 
 import java.lang.invoke.SwitchPoint;
+import java.util.ArrayList;
 
 public class App
 {
-    public static void main( String[] args ) throws ExceptionHeight {
+    public static void main( String[] args )  {
+        EventStekRefact stek = new EventStekRefact(new ArrayList<Integer>());
+        int n=1;
+        for (int i=0;i<3;i++) {
+            for (int j=0;j<2;j++) {
+                stek.addElem(n);
+                n++;
+            }
+            stek.process();
+        }
 
-        int r = 5;
-        System.out.println(Math.pow(r,2)*Math.PI);
+        System.out.println(stek.toString());
+
+        int[] arr = {1,2,3,4,5,6};
+        int n2=0;
+        EventQueueRefact queue = new EventQueueRefact(new ArrayList<Integer>());
+        for (int i=0;i<arr.length/2;i++) {
+            for (int j=0;j<2;j++) {
+                queue.addElem(arr[n2]);
+                n2++;
+            }
+            queue.process();
+        }
+        System.out.println(queue.toString());
+
+        //Мой неидеальный вариант)
+        /*EventStek stek = new EventStek(new ArrayList<Integer>());
+
+        stek.addElem(1);
+        stek.addElem(2);
+        stek.obrabotchik();
+        stek.addElem(3);
+        stek.addElem(4);
+        stek.obrabotchik();
+        stek.addElem(5);
+        stek.addElem(6);
+        stek.obrabotchik();
+        System.out.println(stek.toString());
+
+        EventQueue queue = new EventQueue(new ArrayList<Integer>());
+        queue.addElem(1);
+        queue.addElem(2);
+        queue.obrabotchik();
+        queue.addElem(3);
+        queue.addElem(4);
+        queue.obrabotchik();
+        queue.addElem(5);
+        queue.addElem(6);
+        queue.obrabotchik();
+        System.out.println(queue.toString());
+
+
+
         /*Account acc = new Account(1);
         System.out.println(acc.getId());
         System.out.println(acc.getId() instanceof String);
